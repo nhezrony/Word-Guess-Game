@@ -18,7 +18,7 @@ $(".word").html("<h1>" + placeHolderStr + "<H1>");
 var usrGuess = "";
 var tries = 0;
 $('.btn').click(function() {
-    if (tries < 8 && placeHolder.includes("_ ")) {
+    if (tries < 8) {
         usrGuess = $(this).attr('value');
         if(currentWord.includes(usrGuess)) {
             for(var i = 0; i < currentWord.length; i++) {
@@ -38,7 +38,7 @@ $('.btn').click(function() {
             $("body").css("background-image", 'url("assets/images/try' + tries + '.png")');
         } 
         if (placeHolder.includes("_ ") === false) {
-            var audio = new Audio('../audio' + currentWord + '.mp3');
+            var audio = new Audio('assets/audio/' + currentWord + '.mp3');
             audio.play();
             alert("You Win") 
         }
@@ -47,5 +47,6 @@ $('.btn').click(function() {
         alert("sorry try again")
         $(this).toggleClass('btn-light btn-danger');
         $("body").css("background-image", 'url("assets/images/try9.png")');
+        location.reload();
     }
 });
